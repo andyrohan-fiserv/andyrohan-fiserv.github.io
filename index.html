@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Android-JS bridge test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+        //<![CDATA[
+        function __doPostBack(eventTarget, eventArgument) {
+            var theForm = document.getElementById('testForm');
+            console.log(theForm);
+        
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+
+        function WebForm_OnSubmit() {
+            return true;
+        }
+        //]]>
+    </script>
+</head>
+<body>
+
+    <form method="post" action="https://falconbank.architect-cert.fiservapps.com/signin.aspx" id="testForm">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+        </div>
+    <div class="box">
+        <h1>Login</h1>
+        <input type="hidden" name="authData" id="authData" value="">
+        <input type="hidden" name="signature" id="signature" value="">
+        <input type="hidden" name="authAttempted" id="authAttempted" value="">
+            
+        <input type="email" name="email" value="andy@fiserv.com" class="email" />
+        <input type="password" name="password" value="email" class="email" />
+        
+        <div class="btn"><input type="submit" value="Sign In" id="submitBtn"></div></a> <!-- End Btn -->
+    
+    </div> <!-- End Box -->
+    
+    </form>
+    <p id="lastmod"></p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
