@@ -14,10 +14,9 @@
 
 <script type="text/javascript">
         //<![CDATA[
-        function __doPostBack(eventTarget, eventArgument) {
-            var theForm = document.getElementById('testForm');
-            console.log(theForm);
-        
+        function __doPostBack(eventTarget, eventArgument, method) {
+            var theForm = method == "post" ? document.getElementById('postForm') : document.getElementById('getForm');
+            
             if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
                 theForm.__EVENTTARGET.value = eventTarget;
                 theForm.__EVENTARGUMENT.value = eventArgument;
@@ -33,13 +32,13 @@
 </head>
 <body>
 
-    <form method="get" action="/page2.html" id="testForm">
+    <form method="post" action="/page2.html" id="postForm">
         <div class="aspNetHidden">
             <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
             <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
         </div>
     <div class="box">
-        <h1>Login</h1>
+        <h1>Login (POST)</h1>
         <input type="hidden" name="authData" id="authData" value="">
         <input type="hidden" name="signature" id="signature" value="">
         <input type="hidden" name="authAttempted" id="authAttempted" value="">
@@ -50,7 +49,25 @@
         <div class="btn"><input type="submit" value="Sign In" id="submitBtn"></div></a> <!-- End Btn -->
     
     </div> <!-- End Box -->
+    </form>
+
+    <form method="get" action="/page2.html" id="getForm">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+        </div>
+    <div class="box">
+        <h1>Login (GET)</h1>
+        <input type="hidden" name="authData" id="authData" value="">
+        <input type="hidden" name="signature" id="signature" value="">
+        <input type="hidden" name="authAttempted" id="authAttempted" value="">
+            
+        <input type="email" name="email" value="andy@fiserv.com" class="email" />
+        <input type="password" name="password" value="email" class="email" />
+        
+        <div class="btn"><input type="submit" value="Sign In" id="submitBtn"></div></a> <!-- End Btn -->
     
+    </div> <!-- End Box -->
     </form>
     <p id="lastmod"></p>
 

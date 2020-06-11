@@ -7,12 +7,12 @@ class FpTest {
 $(document).ready(function(){
 
   FA = new FpTest()
-  FA.login = function (authData, signature) {
+  FA.login = function (authData, signature, method) {
     document.getElementById('authData').value = authData;
     document.getElementById('signature').value = signature;
     document.getElementById('authAttempted').value = 'true';
         
-    __doPostBack('authData', 'login');
+    __doPostBack('authData', 'login', method);
     return '';
   }
 
