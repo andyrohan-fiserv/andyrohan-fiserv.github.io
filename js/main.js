@@ -13,7 +13,6 @@ $(document).ready(function(){
     document.getElementById('authAttempted').value = 'true';
         
     __doPostBack('authData', 'login', method);
-    return '';
   }
 
   $("#submitBtn").click(function(){
